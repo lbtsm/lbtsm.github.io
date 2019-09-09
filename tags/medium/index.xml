@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>medium on Blog Of Ming</title>
+    <link>https://lbtsm.github.io/tags/medium/</link>
+    <description>Recent content in medium on Blog Of Ming</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Aug 2019 17:06:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://lbtsm.github.io/tags/medium/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go test中鲜为人知的功能</title>
+      <link>https://lbtsm.github.io/posts/medium/go-test%E4%B8%AD%E9%B2%9C%E4%B8%BA%E4%BA%BA%E7%9F%A5%E7%9A%84%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Fri, 02 Aug 2019 17:06:07 +0800</pubDate>
+      
+      <guid>https://lbtsm.github.io/posts/medium/go-test%E4%B8%AD%E9%B2%9C%E4%B8%BA%E4%BA%BA%E7%9F%A5%E7%9A%84%E5%8A%9F%E8%83%BD/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
