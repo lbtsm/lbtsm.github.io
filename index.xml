@@ -6,10 +6,19 @@
     <description>Recent content on Blog Of Ming</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Aug 2019 17:06:07 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Sep 2019 17:13:14 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.lbtsm.site/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git Submodule(子模块)</title>
+      <link>https://blog.lbtsm.site/posts/git/gitsubmodule/</link>
+      <pubDate>Fri, 20 Sep 2019 17:13:14 +0800</pubDate>
+      
+      <guid>https://blog.lbtsm.site/posts/git/gitsubmodule/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Go test中鲜为人知的功能</title>

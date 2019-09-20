@@ -3,14 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.lbtsm.site/posts/</loc>
-    <lastmod>2019-09-09T11:57:44+08:00</lastmod>
+    <loc>https://blog.lbtsm.site/</loc>
+    <lastmod>2019-09-20T17:13:14+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.lbtsm.site/</loc>
-    <lastmod>2019-08-02T17:56:05+08:00</lastmod>
+    <loc>https://blog.lbtsm.site/posts/git/gitsubmodule/</loc>
+    <lastmod>2019-09-20T17:13:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lbtsm.site/tags/</loc>
+    <lastmod>2019-09-20T17:13:14+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lbtsm.site/tags/git/</loc>
+    <lastmod>2019-09-20T17:13:14+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.lbtsm.site/posts/</loc>
+    <lastmod>2019-09-09T11:57:44+08:00</lastmod>
   </url>
   
   <url>
@@ -20,18 +37,12 @@
   
   <url>
     <loc>https://blog.lbtsm.site/posts/interface/slice/</loc>
-    <lastmod>2019-08-02T17:56:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lbtsm.site/tags/</loc>
-    <lastmod>2019-08-02T17:56:05+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-09-19T10:58:02+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.lbtsm.site/tags/go/</loc>
-    <lastmod>2019-08-02T17:56:05+08:00</lastmod>
+    <lastmod>2019-09-19T10:58:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
