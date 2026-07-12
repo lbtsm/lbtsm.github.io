@@ -1,0 +1,9 @@
+# Hugo 构建产物 (由 GitHub Actions 构建, 不入库)
+public/
+resources/
+
+# 系统文件
+.DS_Store
+
+# Hugo 锁文件
+.hugo_build.lock
