@@ -68,7 +68,7 @@ buildExpired = false
   [params.homeInfoParams]
     Title = "👋 欢迎"
     Content = """
-![博客封面](/img/home-cover.png)
+![博客封面](/img/home-cover.jpg)
 
 这里是 lbtsm 的技术博客,记录 Go、区块链与 DeFi 的学习笔记。
 """
