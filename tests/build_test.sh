@@ -90,7 +90,17 @@ for md in "${posts[@]}"; do
   fi
 done
 
-echo "== 7. 首页渲染出文章标题 =="
+echo "== 7. 无重复 URL: 平铺 md 与同名 bundle 不得并存 =="
+for d in content/posts/*/; do
+  slug="$(basename "$d")"
+  if [ -f "content/posts/$slug.md" ] && [ -f "content/posts/$slug/index.md" ]; then
+    bad "posts/$slug.md 与 posts/$slug/index.md 并存, 会争抢同一 URL"
+  else
+    ok "posts/$slug 无平铺/bundle 冲突"
+  fi
+done
+
+echo "== 8. 首页渲染出文章标题 =="
 # uniswap 文章标题应出现在首页 HTML 中, 证明渲染链路连通
 if [ -f "$PUBLIC/index.html" ] && grep -q "Uniswap" "$PUBLIC/index.html"; then
   ok "首页包含文章标题 (Uniswap)"
