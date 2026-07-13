@@ -3,14 +3,15 @@ locale = "zh-cn"
 title = "lbtsm 的博客"
 theme = "PaperMod"
 
-# 分页
-paginate = 5
-
 # 输出 RSS / sitemap / 首页 JSON(供搜索用)
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
+
+# 分页 (paginate 已在新版 Hugo 移除, 用 pagination.pagerSize)
+[pagination]
+  pagerSize = 5
 
 [minify]
   disableXML = true
