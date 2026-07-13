@@ -69,8 +69,6 @@ buildExpired = false
     Title = "👋 欢迎"
     Content = """
 ![博客封面](/img/home-cover.jpg)
-
-这里是 lbtsm 的技术博客,记录 Go、区块链与 DeFi 的学习笔记。
 """
 
   # 搜索页需要的输出配置(见上方 outputs)

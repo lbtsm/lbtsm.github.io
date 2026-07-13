@@ -25,9 +25,8 @@ V1版本是**Hayden Adams**工程师用Vyper（pyhton版的evm语言）实现的
 > 核心公式就一个 x * y = k
 
 这个版本也有很强烈的限制，比如
-- 仅支持ETH<-> ERC20池，任意一个token必须和ETH做对
+- 仅支持ETH<-> ERC20池，任意一个token**必须和ETH做对**
 - 手续费固定0.3%
-
 
 ## V2
 
