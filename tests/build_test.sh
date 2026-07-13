@@ -32,7 +32,24 @@ echo "== 2. 首页存在 =="
 [ -f "$PUBLIC/index.html" ] && ok "public/index.html 存在" || bad "缺少 public/index.html"
 
 echo "== 3. 文章页生成 =="
-for slug in uniswap hello-world; do
+# 动态发现文章: 支持平铺 md (posts/foo.md) 与页面束 (posts/foo/index.md)
+shopt -s nullglob
+slugs=()
+for md in content/posts/*.md; do
+  slugs+=("$(basename "$md" .md)")
+done
+for md in content/posts/*/index.md; do
+  slugs+=("$(basename "$(dirname "$md")")")
+done
+if [ ${#slugs[@]} -eq 0 ]; then
+  bad "content/posts 下没有发现任何文章"
+fi
+for slug in "${slugs[@]}"; do
+  # 草稿不会生成页面, 跳过 draft: true 的文章
+  src="content/posts/$slug.md"; [ -f "$src" ] || src="content/posts/$slug/index.md"
+  if awk 'NR==1&&/^---/{f=1;next} /^---/{exit} f' "$src" | grep -qE '^draft:[[:space:]]*true'; then
+    continue
+  fi
   if [ -f "$PUBLIC/posts/$slug/index.html" ]; then
     ok "文章页 posts/$slug/ 存在"
   else
@@ -54,8 +71,7 @@ fi
 
 echo "== 6. 文章 front matter 合法 =="
 # 每篇文章 md 必须含 title 和可解析的 date
-shopt -s nullglob
-posts=(content/posts/*.md)
+posts=(content/posts/*.md content/posts/*/index.md)
 if [ ${#posts[@]} -eq 0 ]; then
   bad "content/posts 下没有任何文章"
 fi
