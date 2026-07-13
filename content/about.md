@@ -1,12 +1,8 @@
 ---
 title: "关于"
 date: 2026-07-12
-slug: "about"
-menu:
-    main:
-        weight: -50
-        params:
-            icon: user
+url: "/about/"
+ShowToc: false
 ---
 
 我是 lbtsm,这里记录我在 Go、区块链、DeFi 等方向的学习笔记。

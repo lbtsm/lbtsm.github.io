@@ -4,7 +4,7 @@ defaultContentLanguage = "zh-cn"
 # 中文站点: 让 .Summary / .WordCount 正确处理 CJK
 hasCJKLanguage = true
 title = "lbtsm 的博客"
-theme = "hugo-theme-stack"
+theme = "PaperMod"
 
 enableRobotsTXT = true
 buildDrafts = false
@@ -19,59 +19,62 @@ buildExpired = false
   disableXML = true
   minifyOutput = true
 
-[params]
-  # 文章所在 section (Stack 默认是 "post", 我们用 "posts")
-  mainSections = ["posts"]
-  rssFullContent = true
-  description = "lbtsm 的技术博客 —— 记录 Go、区块链、DeFi 等学习笔记"
+# 首页额外输出 JSON, 供 PaperMod 搜索使用
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
-  [params.footer]
-    since = 2019
-
-  [params.dateFormat]
-    published = "2006-01-02"
-    lastUpdated = "2006-01-02"
-
-  # 左侧边栏
-  [params.sidebar]
-    emoji = "🚀"
-    subtitle = "记录 Go、区块链与 DeFi 的学习笔记"
-
-  [params.article]
-    headingAnchor = false
-    math = false
-    toc = true
-    readingTime = true
-    [params.article.list]
-      showTags = true
-    [params.article.license]
-      enabled = false
-
-  # 首页右侧小组件: 搜索 / 归档 / 分类 / 标签云
-  [params.widgets]
-    homepage = [
-      { type = "search" },
-      { type = "archives", params = { limit = 5 } },
-      { type = "categories", params = { limit = 10 } },
-      { type = "tag-cloud", params = { limit = 10 } },
-    ]
-    page = [{ type = "toc" }]
-
-  [params.comments]
-    enabled = false
-
-  [params.colorScheme]
-    toggle = true
-    default = "auto"
-
-# 侧边栏社交图标
+# 导航菜单
 [menu]
-  [[menu.social]]
-    identifier = "github"
-    name = "GitHub"
-    url = "https://github.com/lbtsm"
-    [menu.social.params]
-      icon = "brand-github"
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 30
+  [[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search/"
+    weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 50
+
+[params]
+  env = "production"
+  description = "lbtsm 的技术博客 —— 记录 Go、区块链、DeFi 等学习笔记"
+  author = "lbtsm"
+  defaultTheme = "auto"          # 深/浅色自动跟随系统
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+
+  # 首页信息区
+  [params.homeInfoParams]
+    Title = "👋 欢迎"
+    Content = "这里是 lbtsm 的技术博客,记录 Go、区块链与 DeFi 的学习笔记。"
+
+  # 搜索页需要的输出配置(见上方 outputs)
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    threshold = 0.4
+    minMatchCharLength = 0
 
 # 代码高亮
 [markup]

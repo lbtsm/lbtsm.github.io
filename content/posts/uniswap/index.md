@@ -5,7 +5,10 @@ draft: false
 tags: ["DeFi", "区块链", "Uniswap"]
 categories: ["区块链"]
 summary: "Uniswap 的核心特性"
-image: uniswap-cover.png
+cover:
+  image: uniswap-cover.png
+  alt: "Uniswap 封面"
+  relative: true   # 图片在文章 bundle 目录内, 用相对路径解析
 ---
 
 ## Summary
@@ -14,8 +17,18 @@ image: uniswap-cover.png
 
 ## V1
 
-V1版本是**Hayden Adams**工程师用Vyper（pyhton版的evm语言），
+V1版本是**Hayden Adams**工程师用Vyper（pyhton版的evm语言）实现的一版，主要证明了
+- 恒定乘积AMM是能跑的，
+- 
+
+## V2
+
+## V3
 
 ### CLMM
 
 之前在 Solana 上的 DEX 聚合器 - Jupiter 中提到了 AMM 这个概念,这个是属于 Uniswap v2 中提到的,它有一个缺陷就是无常损失,意思是你一直持有投入到 LP 的 token,比你把 token 投入到 LP 中获取的利益更多。为了弥补这个缺陷(当然还有其他的问题),Uniswap v3 引入了 CLMM(集中流动性做市)。
+
+## V4
+
+
