@@ -64,9 +64,9 @@ buildExpired = false
   ShowToc = true
   TocOpen = false
 
-  # 首页信息区 (Content 支持 Markdown, 顶部嵌一张封面横幅)
+  # 首页信息区 (Content 支持 Markdown, 只放封面横幅, 不要标题文字)
   [params.homeInfoParams]
-    Title = "👋 欢迎"
+    Title = ""
     Content = """
 ![博客封面](/img/home-cover.jpg)
 """

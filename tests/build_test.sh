@@ -36,6 +36,8 @@ echo "== 3. 文章页生成 =="
 shopt -s nullglob
 slugs=()
 for md in content/posts/*.md; do
+  # _index.md 是 section 索引页, 不是文章
+  [ "$(basename "$md")" = "_index.md" ] && continue
   slugs+=("$(basename "$md" .md)")
 done
 for md in content/posts/*/index.md; do
@@ -76,6 +78,7 @@ if [ ${#posts[@]} -eq 0 ]; then
   bad "content/posts 下没有任何文章"
 fi
 for md in "${posts[@]}"; do
+  [ "$(basename "$md")" = "_index.md" ] && continue
   fm="$(awk 'NR==1&&/^---/{f=1;next} /^---/{exit} f' "$md")"
   title="$(printf '%s\n' "$fm" | grep -E '^title:' | head -1)"
   date="$(printf '%s\n' "$fm" | grep -E '^date:'  | head -1 | sed -E 's/^date:[[:space:]]*//; s/^["'\'']//; s/["'\'']$//')"
