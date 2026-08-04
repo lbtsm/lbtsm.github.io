@@ -64,7 +64,7 @@ buildExpired = false
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowToc = true
-  TocOpen = false
+  TocOpen = true                 # 侧边悬浮目录默认展开
 
   # 首页信息区 (Content 支持 Markdown, 只放封面横幅, 不要标题文字)
   [params.homeInfoParams]
