@@ -11,6 +11,8 @@ PASS=0
 FAIL=0
 DOMAIN="blog.lbtsm.site"
 PUBLIC="public"
+# 文章目录 (与 hugo.toml 的 mainSections 保持一致)
+SECTIONS=(posts datastruct)
 
 ok()   { echo "  ✅ $1"; PASS=$((PASS+1)); }
 bad()  { echo "  ❌ $1"; FAIL=$((FAIL+1)); }
@@ -32,30 +34,32 @@ echo "== 2. 首页存在 =="
 [ -f "$PUBLIC/index.html" ] && ok "public/index.html 存在" || bad "缺少 public/index.html"
 
 echo "== 3. 文章页生成 =="
-# 动态发现文章: 支持平铺 md (posts/foo.md) 与页面束 (posts/foo/index.md)
+# 动态发现文章: 支持平铺 md (sec/foo.md) 与页面束 (sec/foo/index.md)
 shopt -s nullglob
-slugs=()
-for md in content/posts/*.md; do
-  # _index.md 是 section 索引页, 不是文章
-  [ "$(basename "$md")" = "_index.md" ] && continue
-  slugs+=("$(basename "$md" .md)")
+entries=()   # 形如 "posts/uniswap" "datastruct/xxx"
+for sec in "${SECTIONS[@]}"; do
+  for md in content/"$sec"/*.md; do
+    # _index.md 是 section 索引页, 不是文章
+    [ "$(basename "$md")" = "_index.md" ] && continue
+    entries+=("$sec/$(basename "$md" .md)")
+  done
+  for md in content/"$sec"/*/index.md; do
+    entries+=("$sec/$(basename "$(dirname "$md")")")
+  done
 done
-for md in content/posts/*/index.md; do
-  slugs+=("$(basename "$(dirname "$md")")")
-done
-if [ ${#slugs[@]} -eq 0 ]; then
-  bad "content/posts 下没有发现任何文章"
+if [ ${#entries[@]} -eq 0 ]; then
+  bad "文章目录 (${SECTIONS[*]}) 下没有发现任何文章"
 fi
-for slug in "${slugs[@]}"; do
+for entry in "${entries[@]}"; do
   # 草稿不会生成页面, 跳过 draft: true 的文章
-  src="content/posts/$slug.md"; [ -f "$src" ] || src="content/posts/$slug/index.md"
+  src="content/$entry.md"; [ -f "$src" ] || src="content/$entry/index.md"
   if awk 'NR==1&&/^---/{f=1;next} /^---/{exit} f' "$src" | grep -qE '^draft:[[:space:]]*true'; then
     continue
   fi
-  if [ -f "$PUBLIC/posts/$slug/index.html" ]; then
-    ok "文章页 posts/$slug/ 存在"
+  if [ -f "$PUBLIC/$entry/index.html" ]; then
+    ok "文章页 $entry/ 存在"
   else
-    bad "缺少文章页 posts/$slug/index.html"
+    bad "缺少文章页 $entry/index.html"
   fi
 done
 
@@ -73,9 +77,12 @@ fi
 
 echo "== 6. 文章 front matter 合法 =="
 # 每篇文章 md 必须含 title 和可解析的 date
-posts=(content/posts/*.md content/posts/*/index.md)
+posts=()
+for sec in "${SECTIONS[@]}"; do
+  posts+=(content/"$sec"/*.md content/"$sec"/*/index.md)
+done
 if [ ${#posts[@]} -eq 0 ]; then
-  bad "content/posts 下没有任何文章"
+  bad "文章目录 (${SECTIONS[*]}) 下没有任何文章"
 fi
 for md in "${posts[@]}"; do
   [ "$(basename "$md")" = "_index.md" ] && continue
@@ -94,13 +101,15 @@ for md in "${posts[@]}"; do
 done
 
 echo "== 7. 无重复 URL: 平铺 md 与同名 bundle 不得并存 =="
-for d in content/posts/*/; do
-  slug="$(basename "$d")"
-  if [ -f "content/posts/$slug.md" ] && [ -f "content/posts/$slug/index.md" ]; then
-    bad "posts/$slug.md 与 posts/$slug/index.md 并存, 会争抢同一 URL"
-  else
-    ok "posts/$slug 无平铺/bundle 冲突"
-  fi
+for sec in "${SECTIONS[@]}"; do
+  for d in content/"$sec"/*/; do
+    slug="$(basename "$d")"
+    if [ -f "content/$sec/$slug.md" ] && [ -f "content/$sec/$slug/index.md" ]; then
+      bad "$sec/$slug.md 与 $sec/$slug/index.md 并存, 会争抢同一 URL"
+    else
+      ok "$sec/$slug 无平铺/bundle 冲突"
+    fi
+  done
 done
 
 echo "== 8. 首页渲染出文章标题 =="

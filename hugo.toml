@@ -53,6 +53,8 @@ buildExpired = false
 
 [params]
   env = "production"
+  # 首页列出这些目录下的文章 (不写的话 Hugo 只取文章最多的那个 section)
+  mainSections = ["posts", "datastruct"]
   description = "lbtsm 的技术博客 —— 记录 Go、区块链、DeFi 等学习笔记"
   author = "lbtsm"
   defaultTheme = "auto"          # 深/浅色自动跟随系统
