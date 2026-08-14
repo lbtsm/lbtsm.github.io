@@ -238,6 +238,8 @@ fmt.Println(len(s)， cap(s)) // 3 5
 
 ### append 与扩容(当前版本 go1.26.3)
 
+动态数据 append 多数操作均为O(1), 偶尔扩容O(n)，均摊下来就是O(1) —— 这是数组最重要的复杂度结论。
+
 `append` 时，编译器先计算 newLen = oldLen + num，若 newLen > cap(oldSlice)，就会触发扩容，调用 growslice（runtime/slice.go）函数。
 
 ```go
@@ -314,6 +316,8 @@ func nextslicecap(newLen, oldCap int) int {
   }
 ```
 
+**为什么扩容要成倍增长,而不是每次 +1?** 若每次只加 1,插入 n 个元素要拷贝 `1+2+…+n = O(n²)` 次,灾难。成倍增长时,虽然单次扩容 O(n),但扩容越来越稀疏,把总代价均摊到每次 append 上,**均摊复杂度仍是 O(1)**——这是"均摊分析"最经典的例子。
+
 ### 共享底层数组——最经典的坑
 
 切片类似是"视图"，多个切片可指向同一个底层数组，这是 Go 数组类知识里**最容易踩的雷**:
@@ -349,9 +353,7 @@ s2 := []int{}         // 空切片:s2 != nil 为 false，len/cap 为 0
 
 两者都能安全 `append` 和 `range`，日常用 `var s []int` 声明 nil 切片即可。序列化 JSON 时 nil → `null`、空切片 → `[]`，写 API 时要注意。
 
-
 ### 内存对齐测试代码
-
 
 ```go
 type One struct {
