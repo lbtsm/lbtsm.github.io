@@ -7,3 +7,11 @@ resources/
 
 # Hugo 锁文件
 .hugo_build.lock
+hugo_stats.json
+assets/jsconfig.json
+
+# HBS 前端依赖
+node_modules/
+
+# 本地设计预览缓存
+.superpowers/

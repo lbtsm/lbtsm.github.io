@@ -5,10 +5,7 @@ draft: false
 tags: ["网络", "http"]
 categories: []
 summary: ""
-cover:
-  image: https-blog-cover.png
-  alt: "https 封面"
-  relative: true
+carousel: true
 ---
 
 ## Summary
@@ -251,4 +248,3 @@ ECDHE 的规则是"己方私钥 × 对方公钥 = 共享秘密"
   EC），穷举需要的时间超过宇宙年龄。正向计算一瞬间，反向求解不可行——这种"单向门"是整个现代密码学的地基。
 
   random_c、random_s代表的是ECDHE最后的一个E，表示"每次换新钥匙"的纪律
-

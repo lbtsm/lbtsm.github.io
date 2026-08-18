@@ -1,7 +1,5 @@
 ---
 title: "搜索"
-layout: "search"
-url: "/search/"
-summary: "search"
+summary: "搜索"
 placeholder: "搜索文章..."
 ---

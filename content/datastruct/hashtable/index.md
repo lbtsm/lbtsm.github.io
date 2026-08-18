@@ -1,12 +1,9 @@
 ---
-title: "Hashtable"
+title: "数据结构-Hashtable"
 date: 2026-08-14T15:37:29+08:00
 draft: false
 summary: ""
-cover: 
-    image: cover.png
-    alt: "封面"
-    relative: true
+carousel: true
 ---
 
 ## Summary

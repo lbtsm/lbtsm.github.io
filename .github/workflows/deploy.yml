@@ -34,11 +34,20 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 安装 HBS 前端依赖
+        run: npm ci
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: 运行构建测试 (TDD 断言, 会执行 hugo 构建)
+      - name: 运行构建产物校验
         run: bash tests/build_test.sh
 
       - name: Upload artifact

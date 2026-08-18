@@ -5,10 +5,7 @@ draft: false
 tags: ["DeFi", "区块链", "Uniswap"]
 categories: ["区块链"]
 summary: "Uniswap 的核心特性"
-cover:
-  image: uniswap-cover.png
-  alt: "Uniswap 封面"
-  relative: true   # 图片在文章 bundle 目录内, 用相对路径解析
+carousel: true
 ---
 
 ## Summary
@@ -337,4 +334,3 @@ V4 把**所有池子塞进一个合约**（PoolManager），池子只是这个�
 ### 最后说一句
 
 > 感觉区块链就是数字的游戏，里面的包含太多的数学知识了
-

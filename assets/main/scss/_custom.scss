@@ -1,0 +1,23 @@
+main[data-kind="home"] {
+  max-width: 1600px;
+}
+
+#carouselHome {
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  .carousel-item picture {
+    display: block;
+  }
+
+  .carousel-item img {
+    height: auto !important;
+    aspect-ratio: 8 / 3;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #carouselHome {
+    border-radius: 0;
+  }
+}

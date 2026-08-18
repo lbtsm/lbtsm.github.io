@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 构建产物校验 (TDD)
+# 构建产物校验
 # 先构建站点, 再对 public/ 产物逐条断言。任一断言失败即以非零码退出。
 # 用法: bash tests/build_test.sh
 set -uo pipefail
@@ -12,7 +12,7 @@ FAIL=0
 DOMAIN="blog.lbtsm.site"
 PUBLIC="public"
 # 文章目录 (与 hugo.toml 的 mainSections 保持一致)
-SECTIONS=(posts datastruct)
+SECTIONS=(posts datastruct webthree)
 
 ok()   { echo "  ✅ $1"; PASS=$((PASS+1)); }
 bad()  { echo "  ❌ $1"; FAIL=$((FAIL+1)); }
@@ -118,6 +118,31 @@ if [ -f "$PUBLIC/index.html" ] && grep -q "Uniswap" "$PUBLIC/index.html"; then
   ok "首页包含文章标题 (Uniswap)"
 else
   bad "首页未渲染出文章标题 (Uniswap)"
+fi
+
+echo "== 9. HBS 主题资源与组件 =="
+if find "$PUBLIC/assets/main" -type f -name 'bundle*.css' -print -quit 2>/dev/null | grep -q .; then
+  ok "HBS Bootstrap 样式已生成"
+else
+  bad "缺少 HBS Bootstrap 样式资源"
+fi
+
+if [ -f "$PUBLIC/index.html" ] && grep -q 'data-bs-theme=auto' "$PUBLIC/index.html" && grep -q 'data-palette=purple' "$PUBLIC/index.html"; then
+  ok "首页启用自动深浅色与紫色 palette"
+else
+  bad "首页缺少 HBS 自动主题或紫色 palette"
+fi
+
+if [ -f "$PUBLIC/index.html" ] && grep -q 'id=carouselHome' "$PUBLIC/index.html" && grep -q '/datastruct/hashtable/carousel_hu_' "$PUBLIC/index.html"; then
+  ok "首页轮播及专用横幅已渲染"
+else
+  bad "首页轮播或专用横幅缺失"
+fi
+
+if [ -f "$PUBLIC/search/index.html" ] && [ -f "$PUBLIC/search/meta.json" ] && find "$PUBLIC/assets/search" -type f -name 'bundle*.js' -print -quit 2>/dev/null | grep -q .; then
+  ok "HBS 搜索页面、索引与脚本已生成"
+else
+  bad "HBS 搜索页面、索引或脚本缺失"
 fi
 
 echo ""

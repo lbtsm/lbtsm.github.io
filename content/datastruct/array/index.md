@@ -1,12 +1,9 @@
 ---
-title: "Array"
+title: "数据结构-Array"
 date: 2026-08-04T15:56:26+08:00
 draft: false
 summary: ""
-cover:
-  image: array.png
-  alt: "封面"
-  relative: true
+carousel: true
 ---
 
 ## Summary

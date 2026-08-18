@@ -1,0 +1,36 @@
+{
+  "sum": "efd164fef5d33336",
+  "dependencySources": {
+    "dependencies": {
+      "@algolia/autocomplete-js": "hugo-theme-bootstrap",
+      "@algolia/autocomplete-theme-classic": "hugo-theme-bootstrap",
+      "@docsearch/js": "hugo-theme-bootstrap",
+      "@fortawesome/fontawesome-svg-core": "hugo-theme-bootstrap",
+      "@fortawesome/free-brands-svg-icons": "hugo-theme-bootstrap",
+      "@fortawesome/free-regular-svg-icons": "hugo-theme-bootstrap",
+      "@fortawesome/free-solid-svg-icons": "hugo-theme-bootstrap",
+      "@fullhuman/postcss-purgecss": "hugo-theme-bootstrap",
+      "@popperjs/core": "hugo-theme-bootstrap",
+      "algoliasearch": "hugo-theme-bootstrap",
+      "autoprefixer": "hugo-theme-bootstrap",
+      "bootstrap": "hugo-theme-bootstrap",
+      "date-fns": "hugo-theme-bootstrap",
+      "fuse.js": "hugo-theme-bootstrap",
+      "katex": "hugo-theme-bootstrap",
+      "mark.js": "hugo-theme-bootstrap",
+      "masonry-layout": "hugo-theme-bootstrap",
+      "mermaid": "hugo-theme-bootstrap",
+      "mustache": "hugo-theme-bootstrap",
+      "onchange": "hugo-theme-bootstrap",
+      "postcss-cli": "hugo-theme-bootstrap",
+      "rtlcss": "hugo-theme-bootstrap",
+      "viewerjs": "hugo-theme-bootstrap",
+      "workbox-cacheable-response": "hugo-theme-bootstrap",
+      "workbox-expiration": "hugo-theme-bootstrap",
+      "workbox-precaching": "hugo-theme-bootstrap",
+      "workbox-routing": "hugo-theme-bootstrap",
+      "workbox-strategies": "hugo-theme-bootstrap"
+    },
+    "devDependencies": {}
+  }
+}

@@ -1,12 +1,9 @@
 ---
-title: "List"
+title: "数据结构-List"
 date: 2026-08-08T22:20:30+08:00
 draft: false
 summary: ""
-cover:
-  image: cover.png
-  alt: "封面"
-  relative: true
+carousel: true
 ---
 
 ## Summary

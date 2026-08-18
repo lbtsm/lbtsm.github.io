@@ -1,17 +1,18 @@
 baseURL = "https://blog.lbtsm.site/"
 locale = "zh-cn"
 defaultContentLanguage = "zh-cn"
-# 中文站点: 让 .Summary / .WordCount 正确处理 CJK
 hasCJKLanguage = true
 title = "lbtsm 的博客"
-theme = "PaperMod"
+theme = "hugo-theme-bootstrap"
 
 enableRobotsTXT = true
+enableEmoji = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
+pygmentsUseClasses = true
+timeout = "120s"
 
-# 分页 (paginate 已在新版 Hugo 移除, 用 pagination.pagerSize)
 [pagination]
   pagerSize = 5
 
@@ -19,68 +20,126 @@ buildExpired = false
   disableXML = true
   minifyOutput = true
 
-# 首页额外输出 JSON, 供 PaperMod 搜索使用
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
 
-# 导航菜单
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[build]
+  writeStats = true
+
 [menu]
   [[menu.main]]
     identifier = "posts"
     name = "文章"
     url = "/posts/"
     weight = 10
+    [menu.main.params]
+      icon = '<i class="fas fa-fw fa-file-alt"></i>'
   [[menu.main]]
     identifier = "tags"
     name = "标签"
     url = "/tags/"
     weight = 20
+    [menu.main.params]
+      icon = '<i class="fas fa-fw fa-tags"></i>'
   [[menu.main]]
     identifier = "archives"
     name = "归档"
     url = "/archives/"
     weight = 30
+    [menu.main.params]
+      icon = '<i class="fas fa-fw fa-file-archive"></i>'
   [[menu.main]]
     identifier = "search"
     name = "搜索"
     url = "/search/"
     weight = 40
+    [menu.main.params]
+      icon = '<i class="fas fa-fw fa-search"></i>'
   [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
     weight = 50
+    [menu.main.params]
+      icon = '<i class="fas fa-fw fa-user"></i>'
 
 [params]
-  env = "production"
-  # 首页列出这些目录下的文章 (不写的话 Hugo 只取文章最多的那个 section)
-  mainSections = ["posts", "datastruct"]
-  description = "lbtsm 的技术博客 —— 记录 Go、区块链、DeFi 等学习笔记"
-  author = "lbtsm"
-  defaultTheme = "auto"          # 深/浅色自动跟随系统
-  ShowReadingTime = true
-  ShowShareButtons = false
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  TocOpen = true                 # 侧边悬浮目录默认展开
+  mainSections = ["posts", "datastruct", "webthree"]
+  description = "lbtsm 的技术博客 - 记录 Go、区块链、DeFi 等学习笔记"
+  brand = "lbtsm 的博客"
+  logo = false
+  palette = "purple"
+  palettes = []
+  color = "auto"
+  dateFormat = "2006年1月2日"
+  titleCase = false
+  carouselPostCount = 5
+  breadcrumb = true
+  readingTime = true
+  socialShare = false
+  searchBar = true
+  comment = false
+  toc = true
+  tocPosition = "sidebar"
+  tocWordCount = 1
+  viewer = true
+  featuredPostCount = false
+  recentPostCount = 5
+  relatedPostCount = 5
+  categoryCount = 10
+  tagCount = 10
+  seriesCount = false
+  taxonomyPostCount = 20
+  countTaxonomyPosts = true
+  sidebarTaxonomies = ["categories", "tags"]
 
-  # 首页信息区 (Content 支持 Markdown, 只放封面横幅, 不要标题文字)
-  [params.homeInfoParams]
-    Title = ""
-    Content = """
-![博客封面](/img/home-cover.jpg)
-"""
+  [params.sidebar]
+    fixed = true
+    collapsed = true
+    taxonomiesToggle = true
+    taxonomiesToggleArchives = true
+    postsToggle = true
+    archives = false
+    categories = false
+    tags = false
+    series = false
+    featuredPosts = false
+    recentPosts = false
 
-  # 搜索页需要的输出配置(见上方 outputs)
-  [params.fuseOpts]
-    isCaseSensitive = false
-    shouldSort = true
-    threshold = 0.4
-    minMatchCharLength = 0
+  [params.codeBlock]
+    lineNos = true
+    maxLines = 30
 
-# 代码高亮
+  [params.post]
+    excerpt = ""
+    excerptMaxLength = 160
+    copyright = false
+    featuredImage = true
+    numberifyHeadings = false
+    imageTitleAsCaption = true
+    panel = true
+    nav = true
+
+  [params.archive]
+    dateFormat = "01-02"
+
+  [params.search]
+    paginate = 10
+    indexPaginate = 100
+    maxResults = 50
+    [params.search.fuse]
+      isCaseSensitive = false
+      minMatchCharLength = 2
+      threshold = 0.3
+
+  [params.actionsPanel]
+    disabled = false
+
 [markup]
   [markup.highlight]
     noClasses = false
@@ -88,4 +147,7 @@ buildExpired = false
     guessSyntax = true
     lineNos = false
   [markup.goldmark.renderer]
-    unsafe = true                # 允许 md 中内嵌 HTML(如图片/表格)
+    unsafe = true
+
+[security.funcs]
+  getenv = ['^HUGO_', '^CI$', 'PWD']
