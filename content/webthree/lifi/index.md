@@ -1,8 +1,8 @@
 ---
 title: "路由协议-lifi"
-date: 2026-08-14T22:08:56+08:00
+date: 2026-08-20T22:08:56+08:00
 draft: false
-tags: ["跨链", "LI.FI", "跨链聚合器", "Diamond", "UniswapX", "Intent", "Solver", "OIF", "ERC-7683"]
+t0ags: ["跨链", "LI.FI", "跨链聚合器", "Diamond", "UniswapX", "Intent", "Solver", "OIF", "ERC-7683"]
 categories: ["webthree"]
 summary: "从 LI.FI 是什么、开发者怎么接入,一路讲到它的内部架构(Diamond 代理、BridgeData/SwapData、寻路在链下执行在链上),再对标 UniswapX;后半篇单独讲 LI.FI Intents & Solver——意图市场怎么运作、Escrow/Compact 两种锁资金方式、四种订单类型与荷兰拍公式,以及集成方和 solver 各自怎么接入。"
 ---
