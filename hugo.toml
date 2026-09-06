@@ -69,7 +69,7 @@ timeout = "120s"
       icon = '<i class="fas fa-fw fa-user"></i>'
 
 [params]
-  mainSections = ["posts", "datastruct", "webthree"]
+  mainSections = ["posts", "datastruct", "webthree", "encyclopedia"]
   description = "lbtsm 的技术博客 - 记录 Go、区块链、DeFi 等学习笔记"
   brand = "lbtsm 的博客"
   logo = false
