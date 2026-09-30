@@ -1,7 +1,7 @@
 ---
 title: "路由协议-Rango"
-date: 2026-09-25T09:31:46+08:00
-draft: true
+date: 2026-09-30T11:31:46+08:00
+draft: false
 tags: ["跨链", "Rango", "跨链聚合器", "Bitcoin", "Cosmos", "THORChain", "路由"]
 categories: ["webthree"]
 summary: "Rango 扫盲:它是什么、和 LI.FI 差在哪(链的广度 vs EVM 的深度)、为什么 Bitcoin/Cosmos 这些链逼出了'多步多签'的执行模式、Basic API 和 Main API 怎么选,以及聚合器不会替你消灭的那些风险。"

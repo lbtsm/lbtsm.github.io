@@ -1,7 +1,7 @@
 ---
 title: "代币化股票-Robinhood"
-date: 2026-09-29T16:43:54+08:00
-draft: true
+date: 2026-09-30T11:43:54+08:00
+draft: false
 tags: ["Robinhood", "RWA", "代币化股票", "Stock Token", "L2", "Arbitrum", "券商"]
 categories: ["webthree"]
 summary: "Robinhood 扫盲:一家靠零佣金和 PFOF 起家、经历过 GameStop 信任危机的美股散户券商,为什么要把股票搬上链、自己发一条 L2;股票代币到底是不是股票;以及它对 crypto 行业真正的分量——RWA 叙事第一次拿到了千万级的零售分发渠道,代价是'开放金融'可能变成'每家券商一条自营链'。"
