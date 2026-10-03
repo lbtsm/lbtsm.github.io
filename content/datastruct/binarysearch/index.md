@@ -1,5 +1,5 @@
 ---
-title: "Binarysearch"
+title: "二分查找"
 date: 2026-09-24T22:52:07+08:00
 draft: false
 tags: []
