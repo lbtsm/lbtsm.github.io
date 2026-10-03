@@ -12,7 +12,7 @@ FAIL=0
 DOMAIN="blog.lbtsm.site"
 PUBLIC="public"
 # 文章目录 (与 hugo.toml 的 mainSections 保持一致)
-SECTIONS=(posts datastruct webthree)
+SECTIONS=(posts datastruct webthree network)
 
 ok()   { echo "  ✅ $1"; PASS=$((PASS+1)); }
 bad()  { echo "  ❌ $1"; FAIL=$((FAIL+1)); }
@@ -113,11 +113,12 @@ for sec in "${SECTIONS[@]}"; do
 done
 
 echo "== 8. 首页渲染出文章标题 =="
-# uniswap 文章标题应出现在首页 HTML 中, 证明渲染链路连通
-if [ -f "$PUBLIC/index.html" ] && grep -q "Uniswap" "$PUBLIC/index.html"; then
-  ok "首页包含文章标题 (Uniswap)"
+# 首页文章列表应至少渲染出一张带标题链接的卡片, 证明渲染链路连通。
+# 不写死具体文章名: 首页按日期倒序只显示最新 pagerSize 篇, 老文章会被新文章挤到后面的分页。
+if [ -f "$PUBLIC/index.html" ] && grep -qE 'post-title[^>]*><a[[:space:]]+href=' "$PUBLIC/index.html"; then
+  ok "首页渲染出文章标题卡片"
 else
-  bad "首页未渲染出文章标题 (Uniswap)"
+  bad "首页未渲染出任何文章标题卡片"
 fi
 
 echo "== 9. HBS 主题资源与组件 =="
