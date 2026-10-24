@@ -84,6 +84,8 @@ timeout = "120s"
   socialShare = false
   searchBar = true
   comment = false
+  # Microsoft Clarity 项目 ID(clarity.microsoft.com 新建项目后在 Settings → Setup 里拿到),留空则不注入
+  clarityID = ""
   toc = true
   tocPosition = "sidebar"
   tocWordCount = 1

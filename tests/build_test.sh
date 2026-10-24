@@ -146,6 +146,22 @@ else
   bad "HBS 搜索页面、索引或脚本缺失"
 fi
 
+echo "== 10. Microsoft Clarity 统计脚本 =="
+CLARITY_ID=$(sed -n 's/^[[:space:]]*clarityID[[:space:]]*=[[:space:]]*"\(.*\)"/\1/p' hugo.toml)
+if [ -n "$CLARITY_ID" ]; then
+  if grep -q "clarity.ms/tag/" "$PUBLIC/index.html" && grep -q "$CLARITY_ID" "$PUBLIC/index.html"; then
+    ok "首页已注入 Clarity 脚本 (ID: $CLARITY_ID)"
+  else
+    bad "配置了 clarityID 但首页没有 Clarity 脚本"
+  fi
+else
+  if grep -q "clarity.ms/tag/" "$PUBLIC/index.html"; then
+    bad "未配置 clarityID 却注入了 Clarity 脚本"
+  else
+    ok "未配置 clarityID, 不注入 Clarity 脚本"
+  fi
+fi
+
 echo ""
 echo "==========================="
 echo "通过: $PASS  失败: $FAIL"
