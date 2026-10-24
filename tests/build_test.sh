@@ -12,7 +12,7 @@ FAIL=0
 DOMAIN="blog.lbtsm.site"
 PUBLIC="public"
 # 文章目录 (与 hugo.toml 的 mainSections 保持一致)
-SECTIONS=(posts datastruct webthree network)
+SECTIONS=(posts datastruct webthree network ai)
 
 ok()   { echo "  ✅ $1"; PASS=$((PASS+1)); }
 bad()  { echo "  ❌ $1"; FAIL=$((FAIL+1)); }
