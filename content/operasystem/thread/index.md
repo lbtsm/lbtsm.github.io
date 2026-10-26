@@ -1,5 +1,5 @@
 ---
-title: "Thread"
+title: "操作系统 - 进程和线程"
 date: 2026-10-24T21:05:14+08:00
 draft: false
 tags: []
